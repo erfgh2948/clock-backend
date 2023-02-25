@@ -70,8 +70,13 @@ public class WineController {
 	
 	@GetMapping("/api/cart/winesincart")//해당 회원의 장바구니에 있는 와인 id를 모두 리턴
 	public ResponseEntity getWineCartData(@CookieValue(value="token",required=false) Integer token){
-		
-		if(token>=1) {
+		// 패킷을 주고받는 중에 뭔가가 문제가 발생해서
+		// 백엔드랑 DB랑 연결이 끊긴것같아요
+		//흠... DB테이블쪽 확인해볼까?
+		// 아니 그러기엔 다른 데이터들 불러오는거 있긴했잖아
+		// 저 페이지도 db데이터 아니요? 맞는데 와인카드 테이블이 있어서 그게 추가가 안된거가 해서그 
+		// 이런식으로 해야하나? 자바도 형 좀 까다롭게 따지나 글쎄.. 이거 한번 해볼까? 이대로? GIT에 올려?넹
+		if(token != null && token>=1) {
 		List<WineCart> winecart = wineCartRepository.findAllByMemberId(token);//memberID로 모든 row 검색
 		return new ResponseEntity<>(winecart,HttpStatus.OK);
 		}
