@@ -44,11 +44,10 @@ public class WineController {
 //		List<Wine> wines=wineRepository.findByNumber();
 		return new ResponseEntity<>(wines,HttpStatus.OK);
 	}
-
 	@PostMapping("/api/cart/winesincart")//와인을 장바구니에 추가요청. 장바구니에 저장한다.중복저장시 그냥됨. 수정필요.
 	public ResponseEntity saveWineCartData(@RequestBody WineCart dto,@CookieValue(value="token",required=false) Integer token){
 		System.out.println("hello");
-		if(token>=1) {
+		if(token != null && token>=1) { //token != null && 추가
 		WineCart newWineCart = new WineCart();
 		newWineCart.setMemberId(token);
 		newWineCart.setWineId(dto.getWineId());
@@ -76,6 +75,9 @@ public class WineController {
 		// 아니 그러기엔 다른 데이터들 불러오는거 있긴했잖아
 		// 저 페이지도 db데이터 아니요? 맞는데 와인카드 테이블이 있어서 그게 추가가 안된거가 해서그 
 		// 이런식으로 해야하나? 자바도 형 좀 까다롭게 따지나 글쎄.. 이거 한번 해볼까? 이대로? GIT에 올려?넹
+		// 이건 좀 많이 까다롭네용ㄷㄷㄷ 그러게..'흠.. 다음에 할까? 오늘 많이 늦었는데?
+		// 하나만
+		// 저거 로그에는 왜 아직도 74번줄이지? 아까 주석단거까지 해서 80번줄 근처로 찍혀야하는거 아닌가 잠만
 		if(token != null && token>=1) {
 		List<WineCart> winecart = wineCartRepository.findAllByMemberId(token);//memberID로 모든 row 검색
 		return new ResponseEntity<>(winecart,HttpStatus.OK);
