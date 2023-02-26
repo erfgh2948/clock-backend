@@ -38,9 +38,10 @@ public class AccountController {
 			Cookie cookie = new Cookie("token", id);//쿠키에 토큰 추가
 			cookie.setHttpOnly(true);//자바스크립트로 접근불가능
 			cookie.setPath("/");//모든경로에서 접근가능
-			
 			res.addCookie(cookie);//서블릿 res에 쿠키추가
-			return new ResponseEntity<>(id,HttpStatus.OK); //id 리턴
+			//현재 cookie는 사용중이 아님.
+			
+			return new ResponseEntity<>(member,HttpStatus.OK); //id 리턴
 		}
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 	}

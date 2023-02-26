@@ -44,6 +44,7 @@ public class WineController {
 //		List<Wine> wines=wineRepository.findByNumber();
 		return new ResponseEntity<>(wines,HttpStatus.OK);
 	}
+
 	@PostMapping("/api/cart/winesincart")//와인을 장바구니에 추가요청. 장바구니에 저장한다.중복저장시 그냥됨. 수정필요.
 	public ResponseEntity saveWineCartData(@RequestBody WineCart dto,@CookieValue(value="token",required=false) Integer token){
 		System.out.println("hello");
