@@ -53,6 +53,7 @@ public class AccountController {
             Cookie gc2 = new Cookie("ghong2", "22");//쿠키에 토큰 추가
 			gc2.setHttpOnly(true);//자바스크립트로 접근불가능
 			gc2.setPath("/");//모든경로에서 접근가능
+			gc2.setSecure(true);
 			res.addCookie(gc2);//서블릿 res에 쿠키추가
             
             Cookie gc3 = new Cookie("ghong3", "33");//쿠키에 토큰 추가
