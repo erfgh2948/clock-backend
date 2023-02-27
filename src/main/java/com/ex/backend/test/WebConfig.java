@@ -11,7 +11,7 @@ public class WebConfig implements WebMvcConfigurer {
 	public void addCorsMappings(CorsRegistry registry) {
 		registry.addMapping("/**")
 				.exposedHeaders("X-AUTH-TOKEN")
-				.allowedOrigins("*")
+				.allowedOriginPatterns("*")
 				.allowedMethods("*")
 				.allowCredentials(true)
 				.maxAge(3000);
