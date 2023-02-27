@@ -23,6 +23,23 @@ public class AccountController {
 	@Autowired
 	private MemberRepository memberRepository;
 	
+    @GetMapping("/api/ghong/1")
+    public ResponseEntity setCookie(HttpServletResponse response) {
+        Cookie gc = new Cookie("ghong1", "11");
+        gc.setHttpOnly(false);
+        gc.setPath("/");
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+    @GetMapping("/api/ghong/2")
+    public ResponseEntity setCookie(HttpServletRequest request) {
+        Cookie[] cookie = request.getCookies();
+        for (Cookie cok : cookie) {
+            System.out.println("쿠키 이름: " + cok.getName());
+            System.out.println("쿠키 값: " + cok.getValue());
+        }
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 	
 	@PostMapping("/api/account/login")
 	public ResponseEntity login(@RequestBody Map<String,String> params,HttpServletResponse res) {
