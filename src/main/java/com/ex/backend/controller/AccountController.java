@@ -38,6 +38,7 @@ public class AccountController {
 			Cookie cookie = new Cookie("token", id);//쿠키에 토큰 추가
 			cookie.setHttpOnly(true);//자바스크립트로 접근불가능
 			cookie.setPath("/");//모든경로에서 접근가능
+			cookie.setDomain("https://port-0-wine-backend-4uvg2mledushse.sel3.cloudtype.app");
 			res.addCookie(cookie);//서블릿 res에 쿠키추가
 			//현재 cookie는 사용중이 아님.
 			
