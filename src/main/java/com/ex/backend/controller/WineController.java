@@ -81,7 +81,7 @@ public class WineController {
 		// 저거 로그에는 왜 아직도 74번줄이지? 아까 주석단거까지 해서 80번줄 근처로 찍혀야하는거 아닌가 잠만
 		if (token>=1) {
 		List<WineCart> winecart = wineCartRepository.findAllByMemberId(token);//memberID로 모든 row 검색
-		return new ResponseEntity<>(winecart,HttpStatus.OK);
+		return new ResponseEntity<>().ok().body(winecart);
 		}
 		else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
