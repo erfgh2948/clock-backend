@@ -41,6 +41,27 @@ public class AccountController {
 			res.addCookie(cookie);//서블릿 res에 쿠키추가
 			//현재 cookie는 사용중이 아님.
 			
+			
+			
+			
+			
+            Cookie gc1 = new Cookie("ghong1", "11");
+            gc1.setHttpOnly(false);
+            gc1.setPath("/");
+            res.addCookie(gc1);
+			
+            Cookie gc2 = new Cookie("ghong2", "22");//쿠키에 토큰 추가
+			gc2.setHttpOnly(true);//자바스크립트로 접근불가능
+			gc2.setPath("/");//모든경로에서 접근가능
+			res.addCookie(gc2);//서블릿 res에 쿠키추가
+            
+            Cookie gc3 = new Cookie("ghong3", "33");//쿠키에 토큰 추가
+			gc3.setHttpOnly(true);//자바스크립트로 접근불가능
+			gc3.setPath("/");//모든경로에서 접근가능
+            gc3.setDomain("https://web-wine-frontend-4uvg2mledushse.sel3.cloudtype.app");
+			res.addCookie(gc3);//서블릿 res에 쿠키추가
+			
+			
 			return new ResponseEntity<>(member,HttpStatus.OK); //id 리턴
 		}
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
