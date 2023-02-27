@@ -16,6 +16,7 @@ import com.ex.backend.repository.MemberRepository;
 
 import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpServletRequest;
 
 @RestController
 public class AccountController {
