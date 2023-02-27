@@ -31,7 +31,7 @@ public class WineController {
 	public ResponseEntity getWine(@CookieValue(value="token",required=false) Integer token){
 		
 		List<Wine> wines=wineRepository.findAll();
-		return new ResponseEntity.ok().body(wines);
+		return new ResponseEntity<>(wines,HttpStatus.OK).ok().body(wines);
 	};
 	
 	@PostMapping("/api/cart/wines")//와인 id들로 와인 정보 반환
@@ -81,7 +81,7 @@ public class WineController {
 		// 저거 로그에는 왜 아직도 74번줄이지? 아까 주석단거까지 해서 80번줄 근처로 찍혀야하는거 아닌가 잠만
 		if (token>=1) {
 		List<WineCart> winecart = wineCartRepository.findAllByMemberId(token);//memberID로 모든 row 검색
-		return ResponseEntity.ok().body(winecart);
+		return new ResponseEntity<>(winecart, HttpStatus.OK).ok().body(winecart);
 		}
 		else return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 	}
