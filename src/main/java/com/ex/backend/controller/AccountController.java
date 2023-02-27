@@ -23,15 +23,6 @@ public class AccountController {
 	@Autowired
 	private MemberRepository memberRepository;
 	
-    @GetMapping("/api/ghong/1")
-    public ResponseEntity setCookie(HttpServletResponse response) {
-        Cookie gc = new Cookie("ghong1", "11");
-        gc.setHttpOnly(false);
-        gc.setPath("/");
-	    response.addCookie(gc);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-	
 	@PostMapping("/api/account/login")
 	public ResponseEntity login(@RequestBody Map<String,String> params,HttpServletResponse res) {
 		Member member=memberRepository.findByEmailAndPassword(params.get("email"),params.get("password"));
