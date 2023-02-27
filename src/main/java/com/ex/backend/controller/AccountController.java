@@ -28,6 +28,7 @@ public class AccountController {
         Cookie gc = new Cookie("ghong1", "11");
         gc.setHttpOnly(false);
         gc.setPath("/");
+	    response.addCookie(gc);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 	
