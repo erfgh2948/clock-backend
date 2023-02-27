@@ -59,7 +59,7 @@ public class AccountController {
 			gc3.setHttpOnly(true);//자바스크립트로 접근불가능
 			gc3.setPath("/");//모든경로에서 접근가능
             //gc3.setDomain("https://web-wine-frontend-4uvg2mledushse.sel3.cloudtype.app");
-			gc3.setDomain("https://port-0-wine-backend-4uvg2mledushse.sel3.cloudtype.app");
+			//gc3.setDomain("https://port-0-wine-backend-4uvg2mledushse.sel3.cloudtype.app");
 			
 			res.addCookie(gc3);//서블릿 res에 쿠키추가
 			
