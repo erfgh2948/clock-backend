@@ -31,7 +31,7 @@ public class WineController {
 	public ResponseEntity getWine(@CookieValue(value="token",required=false) Integer token){
 		
 		List<Wine> wines=wineRepository.findAll();
-		return new ResponseEntity<>(wines,HttpStatus.OK);
+		return new ResponseEntity<>(wines,HttpStatus.OK).ok().body(wines);
 	};
 	
 	@PostMapping("/api/cart/wines")//와인 id들로 와인 정보 반환
