@@ -64,8 +64,8 @@ public class AccountController {
 			
 			res.addCookie(gc3);//서블릿 res에 쿠키추가
 			
-			
-			return new ResponseEntity<>(member,HttpStatus.OK); //id 리턴
+			return new ResponseEntity<>(member,HttpStatus.OK).ok().header("Set-Cookie", "DDDD=333; Path=/").build(); //id 리턴
+			//return new ResponseEntity<>(member,HttpStatus.OK); //id 리턴
 		}
 		throw new ResponseStatusException(HttpStatus.NOT_FOUND);
 	}
