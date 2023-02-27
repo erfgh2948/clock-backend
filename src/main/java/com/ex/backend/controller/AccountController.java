@@ -18,7 +18,6 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
-@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class AccountController {
 	
 	@Autowired
