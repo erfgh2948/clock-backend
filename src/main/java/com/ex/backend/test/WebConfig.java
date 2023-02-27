@@ -19,4 +19,14 @@ public class WebConfig implements WebMvcConfigurer {
 //		allowedMethods - HTTP Method를 지정 (* 로 모든 Method를 허용)
 //		maxAge - 원하는 시간만큼 request를 cashing함
 	}
+	@Bean
+	public EmbeddedServletContainerCustomizer tomcatCustomizer() {
+	    return container -> {
+		if (container instanceof TomcatEmbeddedServletContainerFactory) {
+		    TomcatEmbeddedServletContainerFactory tomcat = (TomcatEmbeddedServletContainerFactory) container;
+		    tomcat.addContextCustomizers(context -> context.setCookieProcessor(new LegacyCookieProcessor()));
+		}
+	    };
+	}
+
 }
