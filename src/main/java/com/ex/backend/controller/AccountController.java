@@ -35,8 +35,9 @@ public class AccountController {
 			
 			String id = member.getId().toString();
 			
-			Cookie cookie = new Cookie("token", id);//쿠키에 토큰 추가
-			cookie.setHttpOnly(true);//자바스크립트로 접근불가능
+			Cookie cookie = new Cookie("DDDD", "333");//쿠키에 토큰 추가
+			cookie.setHttpOnly(false);//자바스크립트로 접근불가능
+			cookie.setSecure(false);
 			cookie.setPath("/");//모든경로에서 접근가능
 			res.addCookie(cookie);//서블릿 res에 쿠키추가
 			//현재 cookie는 사용중이 아님.
